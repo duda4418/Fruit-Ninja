@@ -19,6 +19,8 @@ public class FruitScript : MonoBehaviour
 
     private void Slice(Vector3 direction, Vector3 position, float force)
     {
+        FindObjectOfType<LogicScript>().IncreaseScore();
+
         whole.SetActive(false);
         sliced.SetActive(true);
 
