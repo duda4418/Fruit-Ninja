@@ -8,9 +8,14 @@ public class BladeScript : MonoBehaviour
     public Collider bladeCollider;
     public Camera mainCamera;
     public Vector3 direction{get; private set;}
+    private TrailRenderer bladeTrail;
     public float minSliceVelocity = 0.01f;
     private bool slicing; 
 
+    private void Awake()
+    {
+        bladeTrail = GetComponentInChildren<TrailRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -33,12 +38,15 @@ public class BladeScript : MonoBehaviour
 
         slicing = true;
         bladeCollider.enabled = true;
+        bladeTrail.enabled = true;
+        bladeTrail.Clear();
     }
 
     private void stopSlicing()
     {
         slicing = false;
         bladeCollider.enabled = false;
+        bladeTrail.enabled = false;
     }
 
     private void continueSlicing()
