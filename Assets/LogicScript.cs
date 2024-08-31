@@ -6,8 +6,15 @@ using UnityEngine.UI;
 public class LogicScript : MonoBehaviour
 {
     public Text scoreText;
+    private BladeScript blade;
+    private SpawnerScript spawner;
     private int score;
 
+    private void Awake()
+    {
+        blade = FindObjectOfType<BladeScript>();
+        spawner = FindObjectOfType<SpawnerScript>();
+    }
     private void Start()
     {
         NewGame();
@@ -23,5 +30,11 @@ public class LogicScript : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+    }
+
+    public void Explode()
+    {
+        blade.enabled = false;
+        spawner.enabled = false;
     }
 }
