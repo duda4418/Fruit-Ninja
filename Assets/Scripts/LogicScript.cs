@@ -8,6 +8,8 @@ public class LogicScript : MonoBehaviour
 {
     public Image fadeImage;
     public Text scoreText;
+    public Text highScoreText;
+    private int highScore;
     private BladeScript blade;
     private SpawnerScript spawner;
     private int score;
@@ -20,6 +22,8 @@ public class LogicScript : MonoBehaviour
     private void Start()
     {
         NewGame();
+        highScore = PlayerPrefs.GetInt("highScore", 0);
+        highScoreText.text = "High Score: " + highScore.ToString();
     }
 
     private void NewGame()
@@ -76,27 +80,17 @@ public class LogicScript : MonoBehaviour
             float t = Mathf.Clamp01(elapsed / duration);
             fadeImage.color = Color.Lerp(Color.clear, Color.white, t);
 
-            // Time.timeScale = 1f - t;    
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
+        if(score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highScore", highScore);
+            highScoreText.text = "High Score: " + highScore.ToString();
+        }
         SceneManager.LoadScene("GameOverScene");
-
-        // NewGame();
-
-        // elapsed = 0f;
-
-        //  while(elapsed < duration)
-        // {
-        //     float t = Mathf.Clamp01(elapsed / duration);
-        //     fadeImage.color = Color.Lerp(Color.white, Color.clear, t);
-
-        //     Time.timeScale = 1f - t;    
-        //     elapsed += Time.deltaTime;
-
-        //     yield return null;
-        // }
     }   
 }
