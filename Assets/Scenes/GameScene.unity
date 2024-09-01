@@ -547,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeCollider: {fileID: 1353487822}
   mainCamera: {fileID: 963194227}
-  sliceForce: 4
+  sliceForce: 8
   minSliceVelocity: 0.01
 --- !u!135 &1353487822
 SphereCollider:
@@ -569,7 +569,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1353487823
 Transform:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ Transform:
   m_GameObject: {fileID: 1353487819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07, y: -16.915049, z: 1}
+  m_LocalPosition: {x: -4.07, y: -16.915049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
